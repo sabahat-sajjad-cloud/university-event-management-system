@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  .about-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    background: white;
+    border-radius: 1.5rem;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 15px 35px rgba(37, 117, 252, 0.35);
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    color: #2575fc;
+    text-align: center;
+    margin-bottom: 2rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    user-select: none;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: #555;
+  }
+
+  .highlight {
+    color: #6a11cb;
+    font-weight: 700;
+  }
+
+  .team-section {
+    margin-top: 3rem;
+  }
+
+  .team-member {
+    display: inline-block;
+    width: 180px;
+    margin: 1rem;
+    vertical-align: top;
+    text-align: center;
+  }
+
+  .member-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(101, 67, 232, 0.35);
+    transition: transform 0.3s ease;
+  }
+
+  .member-photo:hover {
+    transform: scale(1.1);
+  }
+
+  .member-name {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #2575fc;
+  }
+
+  .member-role {
+    font-size: 0.95rem;
+    color: #777;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .team-member {
+      width: 100%;
+      margin: 1rem 0;
+    }
+  }
+</style>
+
+<div class="about-container">
+  <h2>About Us</h2>
+  <p>
+    Welcome to <span class="highlight">University Event Scheduler</span> — your trusted platform for planning, organizing, and managing university events with ease and style.
+  </p>
+  <p>
+    Our mission is to empower students, faculty, and staff to coordinate engaging activities that foster community, learning, and growth across campus.
+  </p>
+  <p>
+    We believe that every event is an opportunity to bring people together, celebrate achievements, and inspire new ideas. That's why we've created a user-friendly, vibrant, and interactive platform designed specifically for your university needs.
+  </p>
+
+  <div class="team-section">
+    <h3 style="color:#6a11cb; text-align:center; margin-bottom: 2rem;">Meet the Team</h3>
+
+    <div class="team-member">
+      <img src="{% static 'images/pic3.jpeg' %}" alt="John Doe" class="member-photo" />
+      <div class="member-name">Saba</div>
+      <div class="member-role">Event Manager</div>
+    </div>
+
+    <div class="team-member">
+      <img src="{% static 'images/pic2.jpeg' %}" alt="Jane Smith" class="member-photo" />
+      <div class="member-name">Aqsa</div>
+      <div class="member-role">Lead events</div>
+    </div>
+
+    <div class="team-member">
+      <img src="{% static 'images/pic1.jpg' %}" alt="Alex Johnson" class="member-photo" />
+      <div class="member-name">Sara</div>
+      <div class="member-role">Schedule Event</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

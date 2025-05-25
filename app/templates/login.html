@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light text-dark">
+  <div class="card shadow-lg p-4" style="width: 100%; max-width: 420px; border-radius: 20px;">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-3 text-primary fw-bold">Login</h2>
+      <p class="text-center text-muted">Enter your credentials to access your account.</p>
+
+      {% if error %}
+        <div class="alert alert-danger" role="alert">
+          {{ error }}
+        </div>
+      {% endif %}
+
+      <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+          <label for="username" class="form-label fw-semibold">Username</label>
+          <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-person"></i></span>
+            <input name="username" type="text" class="form-control rounded-end" id="username" placeholder="Enter username" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label fw-semibold">Password</label>
+          <div class="input-group">
+            <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
+            <input name="password" type="password" class="form-control rounded-end" id="password" placeholder="Enter password" required>
+          </div>
+        </div>
+
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-primary rounded-pill py-2 fw-semibold">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

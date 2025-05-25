@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  body {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    min-height: 100vh;
+    padding: 3rem 1rem;
+  }
+
+  .event-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 15px 35px rgba(37, 117, 252, 0.35);
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    color: #2575fc;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    letter-spacing: 0.1em;
+    user-select: none;
+    text-transform: uppercase;
+  }
+
+  .card {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border-radius: 1rem;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
+    padding: 2rem 2.5rem;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 45px rgba(37, 117, 252, 0.5);
+  }
+
+  .event-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .event-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  .event-info div {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .event-info i {
+    font-size: 1.4rem;
+    color: #ffd700; /* bright gold */
+  }
+
+  .no-events {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #dcdcdc;
+    text-align: center;
+    margin-top: 8rem;
+    user-select: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .event-info {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>
+
+<div class="event-container">
+  <h2><i class="fa-solid fa-calendar-days me-3"></i>Scheduled Events</h2>
+
+  <div id="eventList">
+    <!-- Cards injected here -->
+  </div>
+</div>
+
+<script>
+  const events = JSON.parse(localStorage.getItem('scheduledEvents')) || [];
+  const eventList = document.getElementById('eventList');
+  eventList.innerHTML = '';
+
+  if (events.length === 0) {
+    eventList.innerHTML = `<p class="no-events">No events scheduled yet.</p>`;
+  } else {
+    events.forEach(event => {
+      const card = document.createElement('div');
+      card.className = 'card';
+
+      card.innerHTML = `
+        <div class="event-title">${event.title}</div>
+        <div class="event-info">
+          <div><i class="fa-solid fa-calendar-day"></i> ${event.date}</div>
+          <div><i class="fa-solid fa-clock"></i> ${event.time}</div>
+          <div><i class="fa-solid fa-location-dot"></i> ${event.location}</div>
+        </div>
+      `;
+
+      eventList.appendChild(card);
+    });
+  }
+</script>
+{% endblock %}

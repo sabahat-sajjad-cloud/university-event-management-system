@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-5">
+  <div class="row g-5">
+    <!-- About Section -->
+    <div class="col-md-6">
+      <h2 class="mb-3">About Us</h2>
+      <p class="text-muted">
+        Welcome to the University Event Management System! We are dedicated to providing a centralized platform for students and faculty to stay updated on university events, manage schedules, and participate in a wide range of campus activities.
+      </p>
+      <p class="text-muted">
+        Our mission is to create an engaging and connected campus experience. Whether it's seminars, cultural events, fests, or workshops — we bring everything under one roof.
+      </p>
+      <ul class="list-unstyled">
+        <li><i class="bi bi-geo-alt-fill text-primary me-2"></i>123 University, Lahore, Pakistan</li>
+        <li><i class="bi bi-envelope-fill text-primary me-2"></i>education@university.edu.pk</li>
+        <li><i class="bi bi-telephone-fill text-primary me-2"></i>+92 3214739013</li>
+      </ul>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="col-md-6">
+      <h2 class="mb-3">Contact Us</h2>
+      <form method="post" action="">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" class="form-control" id="name" name="name" required />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="email" class="form-control" id="email" name="email" required />
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Your Message</label>
+          <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+      </form>
+
+      {% if success %}
+      <div class="alert alert-success mt-3" role="alert">
+        {{ success }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
